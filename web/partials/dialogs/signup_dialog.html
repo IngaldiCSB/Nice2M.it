@@ -1,0 +1,50 @@
+
+<!--CODICE DEL FORM DI REGISTRAZIONE (INNESTATO NELLO SCOPE LOGINDIALOG)-->         
+<div ng-controller ="signupDialogCtrl">
+    <modal-dialog show='signupModalShow'>
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Please Register</h3>
+                    </div>
+                    <div class="panel-body">
+                            <div class="form-group">
+                                <input type="text" name="first_name" ng-model="reg.first_name" class="form-control input-sm" placeholder="First Name">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="last_name" ng-model="reg.last_name" class="form-control input-sm" placeholder="Last Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="nick_name" ng-model="reg.nick_name" class="form-control input-sm" placeholder="Nick Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="about" ng-model="reg.about" class="form-control input-sm" placeholder="About yourself">
+                            </div>
+                        <form action="http://localhost:8084/nice2mit_backend/SaveImage" method="POST" enctype="multipart/form-data">
+                               <div class="form-group">
+                                 <input ng-model="image" id="imag" type="file" accept="image/*" value="Load Image" name="imag" />
+                                 <input type="submit" value="SUBMIT" name="image" />
+                               </div> 
+                         </form>
+                            <div class="form-group">
+                                <input type="email" name="email" ng-model="reg.email" class="form-control input-sm" placeholder="Email Address">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" ng-model="reg.password" class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password_confirmation" ng-model="reg.password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click= "sendSignupReq (reg);">Register</button>
+                    </div>
+        <button class="btn" ng-click= "closeSignupDialog ()">ANNULLA</button>
+    </modal-dialog>            
+</div>

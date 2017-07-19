@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+    
+    <filter>
+        <description>Filtra tutte le richieste su risorse</description>
+        <filter-name>RestFilter</filter-name>
+        <filter-class>it.csbeng.nice2mit.servlet.filter.RestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RestFilter</filter-name>
+        <url-pattern>/restAPI/*</url-pattern>
+    </filter-mapping>
+    
+    
+    <servlet>
+        <servlet-name>Nice2mit</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>it.csbeng.nice2mit.resource</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Nice2mit</servlet-name>
+        <url-pattern>/restAPI/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>servizio upload immagini</description>
+        <servlet-name>SaveImage</servlet-name>
+        <servlet-class>it.csbeng.nice2mit.servlet.SaveImage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveImage</servlet-name>
+        <url-pattern>/SaveImage</url-pattern>
+    </servlet-mapping>
+    
+    
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    
+</web-app>

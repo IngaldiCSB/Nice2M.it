@@ -1,0 +1,17 @@
+/* 
+    Document   : about
+    Created on : 2-dic-2014, 9.02.03
+    Author     : Luca
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+body{
+    background-image: url("../img/about_icon.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top right;
+   }

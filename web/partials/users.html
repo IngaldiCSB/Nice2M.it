@@ -1,0 +1,72 @@
+<div>
+    <link href="css/bootstrap2.min.css" rel="stylesheet">
+    <link href="css/styles2.css" rel="stylesheet">
+    <link href="css/chatbox.css" rel="stylesheet">
+
+    <div class="page-container" >
+
+        <div class="container-fluid">
+            <div class="row row-offcanvas row-offcanvas-left">
+
+                <!--sidebar-->
+                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                    <div data-spy="affix" data-offset-top="45" data-offset-bottom="90">
+                        <ul class="nav" id="sidebar-nav">
+                            <li><h2>{{nome}} {{cognome}}</h2><p ng-if ="isFriend">che è un mio amico</p>
+                                <p ng-if ="!isFriend">che NON è un mio amico</p>
+                            </li>
+                            <li><a>{{about}}</a></li>
+                        </ul>
+                    </div>
+                </div><!--/sidebar-->
+
+                <!--/main-->
+                <div class="col-xs-12 col-sm-9" data-spy="scroll">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><a class="pull-right">Friend list</a> <h4>Friends</h4></div>
+                                <div class="panel-body">
+                                    <div class="list-group">
+                                        <ul class="example-animate-container">
+                                            <li ng-repeat="amico in amici">
+                                                <a ng-href="{{amicoURL(amico.username)}}" >  {{amico.username}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div><!--/panel-body-->
+
+                            </div><!--/panel-->
+
+
+
+                            <div ng-if ="!isFriend" class="panel panel-default">
+                                <div  class="panel-heading"><a class="pull-left">Do you know him/her??</a>
+                                    <div class="panel-body">
+                                        <button  ng-click="addFriend();" class="btn btn-success pull-right" type="button">Add Friend</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ng-if="isFriend" ng-controller ="videoChatCtrl" ng-init="videochatModalShow = false" id="menu">
+
+                                <button ng-click="videochat();" class="btn btn-success" type="button">Call</button>
+                                <div ng-include = "'partials/dialogs/videochat_dialog.html'"></div>                  
+                                
+                                <div style="clear:both"></div>
+                            </div>
+
+                        </div> <!--/panel-->
+
+                        <div class="col-sm-6" >
+                            <img ng-if = "!(immagine==='')" ng-src={{immagine}} width="260" height="220" alt="avatar"/>
+                            <img ng-if = "(immagine==='')" src="img/defaultavatar.jpg" width="260" height="220" alt="avatar"/>                     
+
+                        </div><!--/panel-body-->
+
+                    </div><!--/col-6-->
+                </div><!--/.col-xs-12-->
+            </div><!--/.row-->
+        </div>
+    </div><!--/.container-->
+</div>

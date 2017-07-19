@@ -1,0 +1,78 @@
+<div>
+<link href="css/bootstrap2.min.css" rel="stylesheet">
+<link href="css/styles2.css" rel="stylesheet">
+<div class="page-container" >
+  
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left">
+          
+        <!--sidebar-->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div data-spy="affix" data-offset-top="45" data-offset-bottom="90">
+            <ul class="nav" id="sidebar-nav">
+             <li><h2>{{profile.nome}} {{profile.cognome}}</h2></li>
+              <li><a>{{profile.about}}</a></li>
+            </ul>
+           </div>
+        </div><!--/sidebar-->
+        
+        
+  	
+        <!--/main-->
+        <div class="col-xs-12 col-sm-9" data-spy="scroll">
+          <div class="row">
+           	 <div class="col-sm-6">
+                                        <div class="panel panel-default">
+                        <div class="panel-heading"><a class="pull-right">Friend list</a> <h4>Friends</h4></div>
+                            
+                            
+                        <div class="panel-body">
+                            <div class="list-group" ng-repeat="amico in amici">
+                                <a ng-if ="amico.online" ng-href="{{amicoURL(amico.username)}}" class ="list-group-item">{{amico.username}}</a>
+                                <a ng-if ="!amico.online" ng-href="{{amicoURL(amico.username)}}" class ="list-group-item active">{{amico.username}}</a>
+                            </div>
+                        </div><!--/panel body-->
+                            
+                    </div><!--/panel-->
+
+             
+                <div class="well"> 
+                    
+                    <div class="panel-body">
+                     <form class="form-horizontal" role="form">
+                      <h4>Search friend</h4>
+                       <div class="form-group" style="padding:14px;">
+                        <textarea ng-model="Search.username" class="form-control" placeholder="Insert username"></textarea>
+                      </div>
+                      <button ng-click="search(Search);" class="btn btn-success pull-right" type="button">Search</button>
+                    </form>
+                    </div>
+                    
+                    <div ng-if="addSearch" class="panel panel-default">
+                    <div class="panel-body">    
+                    <div ng-if="result">
+                            <li>
+                                <a ng-href="{{amicoURL(ricercato)}}">  {{ricercato}}</a>
+                            </li>
+                    </div>
+                        <div ng-if="!result">
+                                <a>  {{ricercato}}</a>
+                    </div>
+                    </div>
+                    </div>
+                    
+                </div><!--/well-->
+             </div> <!--/panel-->
+             
+            <div class="col-sm-6" >
+                     <img ng-if = "!(profile.avatar==='')" ng-src={{profile.avatar}} width="260" height="220" alt="avatar"/>
+                     <img ng-if = "(profile.avatar==='')" src="img/defaultavatar.jpg" width="260" height="220" alt="avatar"/>
+               
+                  </div><!--/panel-body-->
+               
+            </div><!--/col-6-->
+        </div><!--/.col-xs-12-->
+      </div><!--/.row-->
+    </div>
+  </div><!--/.container-->
+</div><!--/ngcontroller-->

@@ -1,0 +1,14 @@
+<div>
+    <modal-dialog show='videochatModalShow'>
+
+        <p> sono la videochat </p>
+        
+        <div id='videoDiv'>
+            <video id="localVideo" width ="320" height ="240" autoplay ></video>
+            <video id="remoteVideo" width ="320" height ="240" autoplay></video>
+            <div ng-include="'partials/components/chat.html'"></div><!--/well-->
+        </div>
+        
+        <button class="btn btn-info" ng-click= "closeVideochatDialog ()">ANNULLA</button>
+    </modal-dialog>
+</div>

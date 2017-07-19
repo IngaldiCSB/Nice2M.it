@@ -1,0 +1,19 @@
+                     <div id="wrapper" ng-controller="ChatCtrl">
+
+                          
+                         <div id="chatbox">
+                             <div ng-repeat="messaggio in messaggi">
+         
+                                 <span id="sentmsg "ng-bind-html="messaggio.testo | emoji" ng-if="!messaggio.ricevuto"class="btn btn-default" style="text-align: left">{{messaggio.testo}}</span>
+                                 <span id="rcvdmsg" ng-bind-html="messaggio.testo | emoji" ng-if="messaggio.ricevuto" class="btn btn-info"style="text-align: right">{{messaggio.testo}}</span>
+                            </div>
+                        </div>
+     
+                         <div class="input-group text-center">
+                            <input class="form-control input" ng-keypress="myFunct($event);" ng-model="myMsg"  name="usermsg" type="text" ng-model="myMsg" id="usermsg" />
+                            <span class="input-group-btn"><button class="btn btn btn-success" ng-click="send();" name="submitmsg" type="submit"  id="submitmsg">send</button></span>
+                         </div>
+                          
+
+                     </div>
+
